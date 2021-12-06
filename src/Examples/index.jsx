@@ -1,6 +1,9 @@
 import React from 'react';
-import PopoverTest from './PopoverTest';
+import ButtonTest from './ButtonTest';
+import CheckboxTest from './CheckboxTest';
 import ModalTest from './ModalTest';
+import PopoverTest from './PopoverTest';
+import SearchableDropdownTest from './SearchableDropdownTest';
 
 const UIExamples = () => {
   const testPageStyle = {
@@ -21,8 +24,11 @@ const UIExamples = () => {
 
   return (
     <div style={testPageStyle}>
-      <PopoverTest exampleContainerStyle={exampleContainerStyle} />
+      {/* <ButtonTest exampleContainerStyle={exampleContainerStyle} /> */}
+      <CheckboxTest exampleContainerStyle={exampleContainerStyle} />
       <ModalTest exampleContainerStyle={exampleContainerStyle} />
+      <PopoverTest exampleContainerStyle={exampleContainerStyle} />
+      <SearchableDropdownTest exampleContainerStyle={exampleContainerStyle} />
     </div>
   );
 };

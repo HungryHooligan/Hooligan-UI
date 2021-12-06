@@ -56,6 +56,7 @@ const Modal = props => {
       }
     };
 
+    // Handles Wheel Movement in Modal
     const handleWheel = event => {
       if (modalRef.current) {
         if (!modalRef.current.contains(event.target)) {
@@ -93,31 +94,33 @@ const Modal = props => {
     return null;
   }
 
-  return createPortal(
-    <div
-      ref={modalRef}
-      className="hooligan-modal hooligan-modal-fade"
-      style={{
-        zIndex: '999999999',
-        ...style,
-      }}
-    >
-      <div className="hooligan-modal-overlay" onClick={handleModalClose} role="none" />
-      <span
-        role="button"
-        aria-label="close"
-        className="hooligan-modal-close"
-        onKeyPress={handleKeyPress}
-        onClick={handleModalClose}
-        tabIndex={0}
+  return (
+    createPortal(
+      <div
+        ref={modalRef}
+        style={{
+          ...style,
+        }}
       >
-        x
-      </span>
-      <div className="hooligan-modal-body">
-        {children}
-      </div>
-    </div>,
-    document.body,
+        <div className="hooligan-ui-modal hooligan-ui-modal-fade">
+          <div className="hooligan-ui-modal-overlay" onClick={handleModalClose} role="none" />
+          <span
+            role="button"
+            aria-label="close"
+            className="hooligan-ui-modal-close"
+            onKeyPress={handleKeyPress}
+            onClick={handleModalClose}
+            tabIndex={0}
+          >
+            x
+          </span>
+          <div className="hooligan-ui-modal-body">
+            {children}
+          </div>
+        </div>
+      </div>,
+      document.body,
+    )
   );
 };
 

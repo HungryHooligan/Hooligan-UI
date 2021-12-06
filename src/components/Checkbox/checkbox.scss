@@ -1,0 +1,78 @@
+/*****************************************************************************/
+/*
+/* Checkbox
+/*
+/*****************************************************************************/
+.hooligan-ui-checkbox {
+  /* Positioning */
+  position: relative;
+  /* Box-model */
+  height: 12px;
+  margin: 4px;
+  /* Typography */
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px; 
+  /* Visual */
+  display: flex;
+  flex-direction: row;
+  /* Misc */ 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.hooligan-ui-checkbox input {
+  /* Positioning */
+  position: absolute;
+  /* Box-model */
+  height: 0;
+  width: 0;
+  /* Typography */
+  /* Visual */
+  opacity: 0;
+  /* Misc */
+}
+
+.hooligan-ui-checkbox-checkmark {
+  /* Positioning */
+  /* Box-model */
+  height: 12px;
+  width: 12px;
+  padding-top: 1px;
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid;
+  /* Typography */
+  /* Visual */
+  display: flex;
+  /* Misc */
+}
+
+.hooligan-ui-checkbox-checkmark span {
+  /* Positioning */
+  /* Box-model */
+  /* Typography */
+  /* Visual */
+  display: none;
+  /* Misc */
+}
+
+.hooligan-ui-checkbox input:checked ~ .hooligan-ui-checkbox-checkmark span {
+  /* Positioning */
+  /* Box-model */
+  /* Typography */
+  /* Visual */
+  display: block;
+  /* Misc */
+}
+
+.hooligan-ui-checkbox-children{
+  /* Positioning */
+  /* Box-model */
+  margin-left: 2px;
+  /* Typography */
+  /* Visual */
+  /* Misc */
+}

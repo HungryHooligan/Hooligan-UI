@@ -1,0 +1,307 @@
+/*****************************************************************************/
+/*
+/* Slider
+/*
+/*****************************************************************************/
+
+div.container-slider {
+  padding: 0 !important;
+  margin: 20px 0 0 0 !important;
+  
+  & #nklyn-homepage-type-header {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+  }
+}
+
+div.slider-header {
+  /* Positioning */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;  
+  /* Box-model */
+  margin-bottom: 16px;
+  margin-right: 16px;
+  width: 100%;
+  /* Typography */
+  /* Visual */
+  /* Misc */
+  &.left {
+    /* Positioning */
+    /* Box-model */
+    flex-direction: row;
+    /* Typography */
+    /* Visual */
+    /* Misc */
+    div.slider-title-holder {    
+      & .slider-title,
+      & .slider-subtitle {        
+      /* Positioning */
+      /* Box-model */
+      margin-top: 5px;
+      margin-bottom: 0px !important;    
+      /* Typography */
+      /* Visual */
+      /* Misc */
+      }
+    }
+    div.slider-control {
+      /* Positioning */
+      /* Box-model */
+      margin-right: 16px;      
+      /* Typography */
+      /* Visual */
+      /* Misc */
+      .slider-button { margin-left: 8px; }
+    }
+  } // .left
+  &.center {
+    /* Positioning */
+    /* Box-model */
+    flex-direction: column;    
+    /* Typography */
+    /* Visual */
+    /* Misc */
+    div.slider-title-holder {
+      &.slider-title,
+      &.slider-subtitle {
+        /* Positioning */
+        /* Box-model */
+        margin-top: 0px;
+        margin-bottom: 8px !important;        
+        /* Typography */
+        /* Visual */
+        /* Misc */
+      }
+    }
+    div.slider-control .slider-button {
+      /* Positioning */
+      /* Box-model */
+      margin-left: 4px;
+      margin-right: 4px;      
+      /* Typography */
+      /* Visual */
+      /* Misc */
+    }
+  } //.center
+
+  &.right{
+    /* Positioning */
+    /* Box-model */
+    flex-direction: row-reverse;
+    /* Typography */
+    /* Visual */
+    /* Misc */
+      div.slider-title-holder {
+        & .slider-title,
+        & .slider-subtitle {     
+        margin-top: 0px;
+        margin-bottom: 0px !important;
+        }
+      }
+      div.slider-control {
+        /* Positioning */
+        /* Box-model */
+        margin-left: 16px;        
+        /* Typography */
+        /* Visual */
+        /* Misc */
+        .slider-button { margin-right: 8px; }
+    }
+  } //right
+
+  div.slider-title-holder{
+      align-self: center;
+      align-content: flex-start;
+      & .slider-title { line-height: 1.2em !important; }
+      & .slider-subtitle { line-height: 1.5em !important; }
+  }
+  div.slider-control {
+    /* Positioning */
+    display: flex;
+    align-self: center;
+    align-content: flex-end;    
+    /* Box-model */
+    /* Typography */
+    /* Visual */
+    /* Misc */
+    .slider-button {
+      /* Positioning */
+      justify-content: center;
+      align-items: center;      
+      /* Box-model */
+      padding: 6px 8px;      
+      /* Typography */
+      /* Visual */
+      border-color: #404040;
+      border-style: solid;
+      border-width: 1px;      
+      color: #fff;
+      /* Misc */
+      i {
+        /* Positioning */
+        /* Box-model */
+        /* Typography */
+        font-size: 14px;
+        /* Visual */
+        vertical-align: sub;        
+        /* Misc */
+        &:hover {
+          cursor: pointer;
+        }
+        i.nookons-chevron-right {
+          /* Positioning */
+          /* Box-model */
+          padding-left: 2px;
+          /* Typography */
+          /* Visual */
+          /* Misc */
+        }
+        i.nookons-chevron-left {
+          /* Positioning */
+          /* Box-model */
+          padding-right: 2px;
+          /* Typography */
+          /* Visual */
+          /* Misc */
+        }        
+      }      
+        &:hover,
+        &:focus{
+            background-color: #202020;
+            cursor: pointer;
+        }
+        &.disabled{
+            color: #404040!important;
+
+            &:hover {
+                cursor: not-allowed !important; 
+            }
+
+            i{
+                &:hover {
+                    cursor: not-allowed !important;  
+                }
+            }
+        }
+    }
+
+  
+      // Disable Buttons in Mobile View
+      @media screen and (max-width: 425px) {
+          display: none;
+      }
+  }
+}
+
+div.slider {
+  overflow: hidden;
+  position: relative;
+
+  display: block;
+  box-sizing: border-box;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+
+  &.noScroll{
+      touch-action: none;
+  }   
+
+  div.slider-loading{
+      padding: 5px;
+      height: 308.81px;
+      width: 293px;
+      text-align: center;
+      background:#181818;
+  
+      -webkit-animation: color-change-2x 2s ease-in-out infinite alternate both;
+      animation: color-change-2x 2s ease-in-out infinite alternate both;
+  
+  
+      @-webkit-keyframes color-change-2x {
+          0% {
+              background: #181818;
+          }
+          100% {
+              background: #101010;
+          }
+      }
+      @keyframes color-change-2x {
+          0% {
+              background: #181818;
+          }
+          100% {
+              background: #101010;
+          }
+      }
+  }
+  
+  div.slider-slides{
+    height: 350px;
+      &.poof{
+          opacity: 0% !important;
+      }
+
+      &.inactive{
+          opacity: 40%;
+      }
+  
+      &.inactive *,
+      &.poof *{
+          pointer-events: none !important;
+      }
+  }
+
+  div.slider-spacer{
+      width: 6px;
+  }
+
+  div.slider-spacer-end {
+    /* Positioning */
+    /* Box-model */
+    margin-top: 151px;
+    height: 10px;
+    width: 10px;    
+    /* Typography */
+    /* Visual */
+    background-color: #ffc03a;
+    border-radius: 50%;
+    /* Misc */
+    content: "";
+  }
+  div.slider-seeAllBtnHolder {
+    /* Positioning */
+    display: flex;
+    flex-direction: column;    
+    /* Box-model */
+    height: 100%;
+    padding: 5px;
+    /* Typography */
+    /* Visual */
+    background: #181818;
+    /* Misc */
+    div.slider-seeAllBtn{
+      text-align: center;
+      margin: auto;
+      i { vertical-align: middle; }
+      div {
+        /* Positioning */
+        /* Box-model */
+        display: inline-block;
+        /* Typography */
+        /* Visual */
+        /* Misc */
+      }
+    }
+    &:hover { background: #101010; }
+  }
+}

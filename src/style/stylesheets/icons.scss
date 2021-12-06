@@ -1,0 +1,59 @@
+/*****************************************************************************/
+/*
+/* Hooligans-UI-Icons
+/* Attributor: moizk, RahulSondhi
+/*
+/*****************************************************************************/
+
+// TODO: Setup The Icons (Ask Moiz How He Did It)
+// @font-face { font-family: 'hooligan-ui-icons';
+//   src:    font-url('hooligan-ui-icons.eot?kiadot');
+//   src:    font-url('hooligan-ui-icons.eot?kiadot#iefix') format('embedded-opentype'),
+//       font-url('hooligan-ui-icons.ttf?kiadot') format('truetype'),
+//       font-url('hooligan-ui-icons.woff?kiadot') format('woff'),
+//       font-url('hooligan-ui-icons.svg?kiadot#hooligan-ui-icons') format('svg');
+//   font-weight: normal;
+//   font-style: normal; }
+
+// [class^="hooligan-ui-icons-"], 
+// [class*=" hooligan-ui-icons-"] { 
+//   /* Positioning */
+//   /* Box-model */
+//   /* Typography */
+//   font-family: 'hooligan-ui-icons' !important;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-variant: normal;
+//   text-transform: none;
+//   line-height: 1;
+//   /* Visual */
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   /* Misc */
+// }
+
+
+/*****************************************************************************/
+/*
+/* Hooligans-UI-Icons CharacterMapping
+/*
+/*****************************************************************************/
+
+// TODO: Fix Whack CSS I Did to make it work for now
+.hooligan-ui-icons-check{
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  &::before {
+    font-weight: 500;
+    display: inline-block;
+    font-family: arial;
+    -ms-transform: scaleX(-1) rotate(-35deg); /* IE 9 */
+    -webkit-transform: scaleX(-1) rotate(-35deg); /* Chrome, Safari, Opera */
+    transform: scaleX(-1) rotate(-35deg);
+    content: "L";
+    margin-top: -3px;
+    margin-left: -3px;
+    position: absolute;
+  }
+}

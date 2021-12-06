@@ -8,7 +8,12 @@ import PropTypes from 'prop-types';
 // <button ref={targetRef}>
 //    Toggle Popover
 // </button>
-// <Popover type={"hover"|"focus"|"click"} targetRef={targetRef} style={style}>
+// <Popover
+//  type = { "hover"| "focus" | "click" }
+//  targetRef = { targetRef }
+//  style = { style }
+//  className = { className }
+// >
 //     Menu
 // </Popover>
 
@@ -30,35 +35,74 @@ const Popover = props => {
 
   const popoverRef = useRef(null);
   const [popoverStyles, setPopoverStyles] = useState({});
+  const [defaultPopoverWidth, setDefaultPopoverWidth] = useState(0);
   const [open, setOpen] = useState(false);
+
+  // Making Custom Refresh Popover Event
+  const refreshEvent = new Event('hooligan-ui-popover-refresh');
+
+  // Setting Global for Popover Default Width
+  useEffect(() => {
+    const width = style.width ? parseFloat(style.width.replace(/[^\d.]*/g, '')) : 0;
+
+    setDefaultPopoverWidth(width);
+  }, [style]);
 
   // Setting Popover Postioning
   useEffect(() => {
+    // Function to set Popover Position in Window
     const settingPopover = () => {
       if (!open) return;
 
       const btnPosition = targetRef.current.getBoundingClientRect();
-      const popoverPosition = popoverRef.current.getBoundingClientRect();
 
       const popoverLocation = {
         top: `${btnPosition.top + btnPosition.height + window.scrollY}px`,
+        right: '',
+        left: '',
       };
 
-      if ((popoverPosition.width + btnPosition.left + window.scrollX) > window.innerWidth) {
-        popoverLocation.right = `${window.innerWidth - btnPosition.right - window.scrollX}px`;
+      const rightSidePosition = btnPosition.right - window.scrollX - defaultPopoverWidth;
+      const leftSidePosition = btnPosition.left + window.scrollX;
+      const centerPosition = btnPosition.left - (
+        (defaultPopoverWidth - (btnPosition.right - btnPosition.left)) / 2
+      );
+
+      const rightSideCheck = ((btnPosition.right - window.scrollX - defaultPopoverWidth) > 0)
+        && (rightSidePosition > 0);
+      const leftSideCheck = ((btnPosition.left + window.scrollX + defaultPopoverWidth)
+        < window.innerWidth) && (leftSidePosition > 0);
+      const centerCheck = (centerPosition > 0) && ((centerPosition + defaultPopoverWidth)
+        < window.innerWidth);
+
+      if (leftSideCheck) {
+        popoverLocation.left = `${leftSidePosition}px`;
+      } else if (rightSideCheck) {
+        popoverLocation.left = `${rightSidePosition}px`;
+      } else if (centerCheck) {
+        popoverLocation.left = `${centerPosition}px`;
+      } else if (defaultPopoverWidth < window.innerWidth) {
+        popoverLocation.left = '10px';
       } else {
-        popoverLocation.left = `${btnPosition.left + window.scrollX}px`;
+        popoverLocation.left = '10px';
+        popoverLocation.width = `${window.innerWidth - 20}px`;
+        popoverLocation.maxWidth = `${window.innerWidth - 20}px`;
+        popoverLocation.minWidth = `${window.innerWidth - 20}px`;
       }
 
       setPopoverStyles(popoverLocation);
     };
 
     window.addEventListener('resize', settingPopover);
+    window.addEventListener('hooligan-ui-popover-refresh', settingPopover);
 
     settingPopover();
 
-    return () => window.removeEventListener('resize', settingPopover);
-  }, [open, targetRef, popoverRef]);
+    return () => {
+      window.removeEventListener('resize', settingPopover);
+      window.removeEventListener('hooligan-ui-popover-refresh', settingPopover);
+    };
+  }, [open, targetRef, popoverRef, defaultPopoverWidth]);
 
   // Setting Toggle for Button through ref
   useEffect(() => {
@@ -86,6 +130,7 @@ const Popover = props => {
     // Handles Clicking Off Popover
     const handleClick = event => {
       if (popoverRef.current && targetRef.current) {
+        window.dispatchEvent(refreshEvent);
         if (!popoverRef.current.contains(event.target)
           && !targetRef.current.contains(event.target)) {
           if (open) {
@@ -95,6 +140,7 @@ const Popover = props => {
       }
     };
 
+    // Handles Wheel Movement in Modal
     const handleWheel = event => {
       if (popoverRef.current) {
         if (!popoverRef.current.contains(event.target)) {
@@ -142,8 +188,8 @@ const Popover = props => {
       style={{
         position: 'absolute',
         zIndex: '999999999999',
-        ...popoverStyles,
         ...style,
+        ...popoverStyles,
       }}
     >
       {children}

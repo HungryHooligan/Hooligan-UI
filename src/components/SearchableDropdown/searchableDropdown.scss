@@ -1,0 +1,212 @@
+/*****************************************************************************/
+/*
+/* Searchable Dropdown
+/*
+/*****************************************************************************/
+.hooligan-ui-searchable-dropdown-container{
+  /* Positioning */
+  /* Box-model */
+  width: 304px;
+  height: 100%;
+  margin: 10px;
+  /* Typography */
+  /* Visual */
+  display: inline-block;
+  background-color: #111;
+  /* Misc */
+}
+
+.hooligan-ui-searchable-dropdown-filter{
+  /* Positioning */
+  position: relative;
+  /* Box-model */
+  min-height: 38px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  border-radius: 2px;
+  /* Typography */
+  /* Visual */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #111;
+  overflow-y: auto;
+  /* Misc */
+
+  .hooligan-ui-searchable-dropdown-filter-input{
+    /* Positioning */
+    /* Box-model */
+    width: 100%;
+    /* Typography */
+    /* Visual */
+    display: flex;
+    flex-direction: row;
+    /* Misc */
+    i {
+      /* Positioning */
+      /* Box-model */
+      padding: 0px 10px;
+      border-right: 2px solid #202020 ;
+      height: 50%;
+      margin: auto;
+      /* Typography */
+      /* Visual */
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      place-content: center;
+      /* Misc */
+    }
+    input[type="search"]{
+      /* Positioning */
+      /* Box-model */
+      width: 100%;
+      padding: 12px;
+      border: 0;
+      border-left: 2px solid #fff;
+      border-right: 2px solid #fff;
+      /* Typography */
+      color: #fff;
+      /* Visual */
+      background-color: rgba(0,0,0,0);
+      outline: none;
+      /* Misc */
+    }
+  }
+}
+
+.hooligan-ui-searchable-dropdown-dropdown{
+  /* Positioning */
+  position: relative;
+  /* Box-model */
+  width: 300px;
+  border: 2px solid #fff;
+  border-top: 0px;
+  /* Typography */
+  /* Visual */
+  overflow-y: auto;
+  background-color: #111;
+  /* Misc */
+  z-index: 1;
+}
+
+.hooligan-ui-searchable-dropdown-dropdown div[role="option"]{
+  /* Positioning */
+  /* Box-model */
+  min-height: 30px;
+  /* Typography */
+  text-align: center;
+  /* Visual */
+  display: flex;
+  flex-direction: row;
+  place-content: space-evenly;
+  /* Misc */
+
+  div{
+    /* Positioning */
+    /* Box-model */
+    margin: auto;
+    /* Typography */
+    /* Visual */
+    /* Misc */
+  }
+}
+
+.hooligan-ui-searchable-dropdown-dropdown div[role="option"]:hover{
+  /* Positioning */
+  /* Box-model */
+  /* Typography */
+  /* Visual */
+  background-color: #2a2a2c;
+  /* Misc */
+}
+
+.hooligan-ui-searchable-dropdown-tag-list{
+  /* Positioning */
+  /* Box-model */
+  max-height: 90px;
+  width: 100%;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  /* Typography */
+  /* Visual */
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  /* Misc */
+  .hooligan-ui-searchable-dropdown-tag{
+    /* Positioning */
+    /* Box-model */
+    border-radius: 3px;
+    margin: 2px;
+    padding: 5px;
+    /* Typography */
+    color: #969695;
+    /* Visual */
+    background-color: #2a2a2c;
+    display: flex;
+    opacity: 1;
+    /* Misc */
+
+    .hooligan-ui-searchable-dropdown-tag-title{
+      /* Positioning */
+      /* Box-model */
+      border: 0;
+      /* Typography */
+      color: #969695;
+      /* Visual */
+      background-color: rgba(0,0,0,0);
+      /* Misc */
+    }
+  
+    .hooligan-ui-searchable-dropdown-tag-btn{
+      /* Positioning */
+      position: relative;
+      /* Box-model */
+      padding: 2px 5px 5px 5px;
+      border: 0;
+      /* Typography */
+      color: #969695;
+      outline: none;
+      /* Visual */
+      align-items: center;
+      background-color: rgba(0,0,0,0);
+      display: flex;
+      /* Misc */
+      cursor: pointer;
+    }
+  }
+}
+
+.hooligan-ui-searchable-dropdown-option-checkmark{
+  /* Positioning */
+  position: absolute;
+  left: 0px;
+  /* Box-model */
+  width: 0px;
+  height: 0px;
+  border-top: 25px solid #ffc03a;
+  border-right: 25px solid transparent;
+  /* Typography */
+  /* Visual */
+  /* Misc */
+  z-index: 1;
+  i {
+    /* Positioning */
+    left: 6px;
+    bottom: 23px;
+    position: relative;
+    /* Box-model */
+    /* Typography */
+    color: #000;
+    /* Visual */
+    /* Misc */
+    z-index: 1000;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}

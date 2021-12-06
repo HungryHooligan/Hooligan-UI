@@ -1,0 +1,114 @@
+/*****************************************************************************/
+/*
+/* Modal
+/*
+/*****************************************************************************/
+.hooligan-ui-modal {
+  /* Positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Box-model */
+  width: 100%;
+  height: 100%;
+  padding: 1.5em 1em;
+  /* Typography */
+  /* Visual */
+  background-color: rgba(0, 0, 0, 0.65) !important;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  display: flex;
+  box-sizing: border-box;
+  /* Misc */
+  z-index: 999;
+}
+
+.hooligan-ui-modal.hooligan-ui-modal-fade {
+  /* Positioning */
+  /* Box-model */
+  /* Typography */
+  /* Visual */
+  animation: fade-in 1s 1 linear;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  /* Misc */
+}
+
+.hooligan-ui-modal>.hooligan-ui-modal-overlay {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Box-model */
+  width: 100%;
+  height: 100%;
+  /* Typography */
+  /* Visual */
+  /* Misc */
+}
+
+.hooligan-ui-modal>.hooligan-ui-modal-close {
+  /* Positioning */
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  /* Box-model */
+  border: 1px solid #c3c0c0;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  padding: 7px;
+  /* Typography */
+  color: #5e5e5e;
+  font-size: 1.25em;
+  /* Visual */
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.749);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  /* Misc */
+}
+
+.hooligan-ui-modal>.hooligan-ui-modal-close:hover {
+  /* Positioning */
+  /* Box-model */
+  /* Typography */
+  /* Visual */
+  background: rgba(255, 255, 255, 0.989);
+  /* Misc */
+}
+
+.hooligan-ui-modal>.hooligan-ui-modal-body {
+  /* Positioning */
+  position: relative;
+  /* Box-model */
+  margin: 0 auto;  
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  max-height: 100%;
+  padding: 15px 20px;
+  /* Typography */
+  color: #c3c0c0;
+  /* Visual */
+  background-color: #111;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Misc */
+  z-index: 2;
+}
+
+@keyframes fade-in {
+  0% {
+    animation-timing-function: cubic-bezier(0.2242, 0.7499, 0.3142, 0.8148);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
